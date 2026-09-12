@@ -40,7 +40,7 @@ endef
 define Package/sane-airscan/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/airscan-discover $(1)/usr/bin/
-	$(INSTALL_DIR) $$(1)/usr/lib/sane
+	$(INSTALL_DIR) $(1)/usr/lib/sane
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/sane/libsane-airscan.so.* $$(1)/usr/lib/sane/
 	$(INSTALL_DIR) $(1)/etc/sane.d/dll.d
 	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/sane.d/airscan.conf $(1)/etc/sane.d/
