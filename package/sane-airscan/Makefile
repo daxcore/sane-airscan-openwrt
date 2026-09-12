@@ -15,6 +15,9 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 
+TAR_OPTIONS:=--strip-components 1 $(TAR_OPTIONS)
+TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/sane-airscan
