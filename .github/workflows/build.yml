@@ -36,7 +36,7 @@ jobs:
           NO_SHFMT_CHECK: true
           INDEX: 1
           PRIVATE_KEY: ${{ secrets.SIGNKEY }}
-          V: w
+          V: sc
 
       - name: Extract public key from signing key
         if: env.HAS_SIGNKEY == 'true'
@@ -56,6 +56,7 @@ jobs:
           DEST="deploy/releases/${{ matrix.release }}/${{ matrix.arch }}"
           mkdir -p $DEST
           shopt -s globstar
+          find bin/packages
           cp bin/packages/**/action/sane-airscan*.apk $DEST/
           cp bin/packages/**/action/packages.adb $DEST/
           cp openwrt-daxcore.pem deploy/
