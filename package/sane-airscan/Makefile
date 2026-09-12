@@ -15,8 +15,6 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 
-MAKE_INSTALL_FLAGS += STRIP=-s
-
 include $(INCLUDE_DIR)/package.mk
 
 define Package/sane-airscan
@@ -38,7 +36,7 @@ endef
 
 
 define Build/Install
-	STRIP=-s $(MAKE) -C $(PKG_BUILD_DIR) \
+	STRIP= $(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR=$(PKG_INSTALL_DIR) \
 		install
 endef
