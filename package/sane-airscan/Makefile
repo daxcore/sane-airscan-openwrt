@@ -36,6 +36,13 @@ define Package/sane-airscan/conffiles
 /etc/sane.d/airscan.conf
 endef
 
+
+define Build/Install
+	STRIP=-s $(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR=$(PKG_INSTALL_DIR) \
+		install
+endef
+
 define Package/sane-airscan/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/airscan-discover $(1)/usr/bin/
