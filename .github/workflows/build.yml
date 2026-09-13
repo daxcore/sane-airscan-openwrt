@@ -36,7 +36,7 @@ jobs:
           NO_SHFMT_CHECK: true
           INDEX: 1
           PRIVATE_KEY: ${{ secrets.SIGNKEY }}
-          V: sc
+          V: w
 
       - name: Extract public key from signing key
         if: env.HAS_SIGNKEY == 'true'
@@ -49,7 +49,11 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: sane-airscan-${{ steps.get_version.outputs.pkg_version }}-openwrt-${{ matrix.release }}-${{ matrix.arch }}
-          path: bin/packages/**/sane-airscan*.apk
+          path: |
+            bin/packages/**/action/sane-airscan*.apk
+            bin/packages/**/action/packages.adb
+            bin/packages/**/action/index.json
+            openwrt-daxcore.pem
 
       - name: Deploy to GitHub Pages
         run: |
@@ -59,6 +63,7 @@ jobs:
           find bin/packages
           cp bin/packages/**/action/sane-airscan*.apk $DEST/
           cp bin/packages/**/action/packages.adb $DEST/
+          cp bin/packages/**/action/index.json $DEST/
           cp openwrt-daxcore.pem deploy/
 
       - name: Push to Pages Branch
