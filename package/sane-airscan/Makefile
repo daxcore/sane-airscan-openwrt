@@ -36,11 +36,11 @@ define Package/sane-airscan/conffiles
 endef
 
 
-define Build/Install
-	STRIP= $(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR=$(PKG_INSTALL_DIR) \
-		install
-endef
+#define Build/Install
+#	STRIP= $(MAKE) -C $(PKG_BUILD_DIR) \
+#		DESTDIR=$(PKG_INSTALL_DIR) \
+#		install
+#endef
 
 define Package/sane-airscan/install
 	$(INSTALL_DIR) $(1)/usr/bin
