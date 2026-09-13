@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "architecture": "aarch64_cortex-a53",
+  "packages": {
+    "sane-airscan": "0.99.38-r1"
+  }
+}
